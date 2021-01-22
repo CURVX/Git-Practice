@@ -1,4 +1,4 @@
-## Useful commands
+## > Useful commands
 - `rmdir <directory>` : needs to be an empty directory
 - `rm -rf <nonEmpty_directory>` : deletes the non-empty directory recursively without prompting anything.
 
@@ -9,14 +9,17 @@
 - `git status` : review the list of files
 - `git add <fileName1> <fileName2> <...>` : stage individual files 
 - `git add .` : Adds all files
-- `git commit -m '<message>'` : commit files staged with a message
-- `git remote add origin https://<userName/repository>.git`: You will first need to create an repository in your git service
-- `git log @{upstream/u}` : what was done locally and not yet published, current branch
-- `git show` : shows the commit message and a diff of the changes introduced
-- `git show @~3` : shows the 3rd-from-last commit
+- `git commit -m '<topic> -m '<description>'` : commit files staged with a message
+- `git checkout -b <branchName>` : create a branch and switch to it
+- `git push -u origin master` : push your branch to remote ( -u as a shorthand for --set-upstream)
+- `git push origin -d <branchName>` : delete your remote branch
+- `git branch -d/D <branchName>` : delete your local branch
+- `git log --oneline` : will show all of your commits with only the first part of the hash and the commit message
 
 ## > Quick Links
-- [Pushing](https://github.com/CURVX/Git-Practice#pushing)
+- [Pushing](https://github.com/CURVX/Git-Practice#-pushing)
+- [Renaming](https://github.com/CURVX/Git-Practice#-renaming)
+- [Branching](https://github.com/CURVX/Git-Practice#-branching)
 
 ## > Setting username and email
 That will allow commits to have the right author name and email associated to them and has nothing to do with authentication when pushing to a remote repository.
@@ -58,9 +61,10 @@ git config user.email mail_at_work@example.com
 - `git remote show origin` : lists the URL for the remote repository as well as the tracking branch information
 ### Remove a Remote Repository
 - `git remote rm <name>` : remove a remote repository
-### Rename a Remote Repository
-- `git remote rename <old> <new>` : change the alias/shortname, for example; origin to destination 
-### Show more information about remoterepository
+### Rename a Remote Repository // Didn't worked!
+- `git remote rename <old> <new>` : change the alias/shortname, for example; origin to destination
+
+### Show more information about remote Repository
 - `git remote show origin`
 ### Add a Remote Repository
 - `git remote add <shortname> <url>`
@@ -172,8 +176,8 @@ git checkout-b<name> v1.0.5
 then rename the local branch, delete the old remote and set the new renamed branch as upstream:
 ```
 git checkout old_branch
-git branch-m new_branch
-git push origin :old_branch
+git branch -m new_branch
+git push origin :old_branch // git push origin -d old_branch
 git push--set-upstream origin new_branch
 ```
 
