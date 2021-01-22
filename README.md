@@ -53,21 +53,24 @@ git config user.email mail_at_work@example.com
 ### Remote
 - `git remote` : shows the short name of each remote handle
 - `git remote -v` : detailed information includes the URL and type of remote(push or pull)
-- `git remote set-url`: 
-#### Change git repository name
-##### Change local setting
-- `git remote set-url origin https://username@bitbucket.org/username/newName.git`
-- `git remote -v` : to check again
-- `git push`
+- `git remote set-url <origin/alias> https://github.com/username/repo.git`: change 'origin' remote's URL/ set URL for a specific remote
+- `git remote get-url <name>` : url for an existing remote
+- `git remote show origin` : lists the URL for the remote repository as well as the tracking branch information
 #### Remove a Remote Repository
 - `git remote rm <name>` : remove a remote repository
 #### Rename a Remote Repository
-- `git remote rename <old> <new>`
+- `git remote rename <old> <new>` : change the alias/shortname, for example; origin to destination 
 #### Show more information about remoterepository
 - `git remote show origin`
 #### Add a Remote Repository
-- `git remote add <name> <url>`
+- `git remote add <shortname> <url>`
 The command git fetch<name> can then be used to create and update remote-tracking branches<name>/<branch>
+
+### Staging
+- `git add .`: will stage all changes to files in the current directory
+- `git reset <filePath>` : unstage a file that contains changes
+- `git diff` : displays what will be committed
+- `git rm --cached <filename>` : delete the file from git without removing it from disk
 
 ### Cloning Repositories
 
