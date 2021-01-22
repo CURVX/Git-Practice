@@ -162,6 +162,10 @@ git checkout-b<name> v1.0.5
 ### Orphan branch
 - `git checkout --orphan new-orphan-branch` : branch with no parent commit
 
+### Rename a branch
+- `git branch -m <newBranchName>` : rename the branch you are currently on.
+- `git branch -m <branchName> <newBranchName>` : rename another branch.
+
 
 ## > Stashing TO_DO
 
