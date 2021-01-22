@@ -132,6 +132,37 @@ The git clone command is used to copy an existing Git repository from a server t
 - `git clone https://github.com/username/projectname.git`: clones the repo in your current directory.
 - `git clone https://github.com/username/projectname.git MyFolder` : clones the repo into MyFolder in your current directory.
 
+## > Aliases TO_DO
+
+## > Rebasing TO_DO
+
+## > Branching
+
+- `git branch <name>` : create a new branch while staying on the current branch
+- `git checkout <name>` : switch to an existing branch
+- `git checkout -b <name>` : create a new branch and switch to it
+- `git branch  <name> [<start-point>]`: <start-point> can be another branch name, commit SHA, HEAD or a tag name
+Example:
+```
+git checkout-b<name> some_other_branch
+git checkout-b<name> af295
+git checkout-b<name> HEAD~2 // Go back 2 commits, you will lose uncommitted work
+git checkout-b<name> v1.0.5
+```
+- `git checkout -` : quick switch to previous branch
+
+### Delete a remote branch
+- `git push origin :<branchName>` : delete a branch on the origin remote repository
+- `git push origin -d <branchName>`
+
+### Delete a local branch
+- `git branch -d <branchName>` : not delete if it has unmerged changes
+- `git branch -D <branchName>` : deletes even if it has unmerged changes
+
+### Orphan branch
+- `git checkout --orphan new-orphan-branch` : branch with no parent commit
+
+
 ## > Stashing TO_DO
 
 ## > Renaming
