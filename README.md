@@ -4,7 +4,7 @@
 
 
 
-## Git useful commands:
+## > Git useful commands:
 - `git init` : creates a hidden folder, .git, needed for Git to work.
 - `git status` : review the list of files
 - `git add <fileName1> <fileName2> <...>` : stage individual files 
@@ -15,10 +15,10 @@
 - `git show` : shows the commit message and a diff of the changes introduced
 - `git show @~3` : shows the 3rd-from-last commit
 
-## Quick Links
+## > Quick Links
 - [Pushing](https://github.com/CURVX/Git-Practice#pushing)
 
-## Setting username and email
+## > Setting username and email
 That will allow commits to have the right author name and email associated to them and has nothing to do with authentication when pushing to a remote repository.
 
 - To declare that identity for all repositories, use `git config--global`
@@ -98,6 +98,24 @@ While you can recover the discarded commits using `reflog` and `reset`, uncommit
 ## > Committing
 
 Commits with Git provide accountability by attributing authors with changes to code.
+
+### Amending a commit
+
+- `git commit --amend` : this will put the currently staged changes onto the previous commit
+
+Note: This can also be used to edit an incorrect commit message. It will bring up the default editor and allow one to change the prior message.
+
+- `git commit --amend -m "New message"` : specify the commit message
+
+Note: Be aware that amending the most recent commit replaces it entirely and the previous commit is removedfrom the branch's history. This should be kept in mind when working with public repositories and on branches withother collaborators.
+
+This means that if the earlier commit had already been pushed, after amending it you will have to `git push --force`.
+
+### Commit message
+
+- `git commit -m "Commit summary" -m "More detailed description follows here"` : can pass in multiple -m arguments
+
+
 
 ## > Cloning Repositories
 
@@ -191,5 +209,7 @@ TASK-123: Implement login through OAuth
 TASK-124: Add auto minification of JS/CSS files
 TASK-125: Fix minifier error when name > 200 chars
 ```
+[Link 1](https://udacity.github.io/git-styleguide/)
+[Link 2](https://chris.beams.io/posts/git-commit/)
 
 
