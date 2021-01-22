@@ -1,14 +1,29 @@
+## Useful commands
+- `rmdir <directory>` : needs to be an empty directory
+- `rm -rf <nonEmpty_directory>` : deletes the non-empty directory recursively without prompting anything.
+
+
+
 ## Git useful commands:
 - `git init` : creates a hidden folder, .git, needed for Git to work.
 - `git status` : review the list of files
 - `git add <fileName1> <fileName2> <...>` : stage individual files 
 - `git add .` : Adds all files
 - `git commit -m '<message>'` : commit files staged with a message
-- `git remote add origin https://<userName/repository>.git`: You will need to create an repository
+- `git remote add origin https://<userName/repository>.git`: You will first need to create an repository in your git service
 - `git log @{upstream/u}` : what was done locally and not yet published, current branch
 - `git show` : shows the commit message and a diff of the changes introduced
 - `git show @~3` : shows the 3rd-from-last commit
+
+## Quick Lins
+- [Pushing](https://github.com/CURVX/Git-Practice#pushing)
+
 ### Cloning Repositories
+
+The git clone command is used to copy an existing Git repository from a server to the local machine
+
+- `git clone https://github.com/username/projectname.git`: clones the repo in your current directory.
+- `git clone https://github.com/username/projectname.git MyFolder` : clones the repo into MyFolder in your current directory.
 
 ### Stashing TO_DO
 
@@ -27,7 +42,7 @@ git push--set-upstream origin new_branch
 ### Pushing
 - `git push<remotename> <object>:<remotebranchname>` : general syntax
 #### Delete remote branch
-- `git push<remotename> :<remotebranchname>` : Deleting the remote branch is the equivalent of pushing an empty object to it.
+- `git push <remotename> :<remotebranchname>` : Deleting the remote branch is the equivalent of pushing an empty object to it.
 Example: `git push origin :wip-yourname`: will delete the remote branch wip-yourname
 Instead of using the colon, you can also use the `--delete` flag, which is better readable in some cases.
 Example: `git push origin --delete wip-yourname`
@@ -72,6 +87,7 @@ Alternatively it is possible to just specify an output file with valid extension
 ### Remote
 - `git remote` : shows the short name of each remote handle
 - `git remote -v` : detailed information includes the URL and type of remote(push or pull)
+- `git remote set-url`: 
 #### Change git repository name
 ##### Change local setting
 - `git remote set-url origin https://username@bitbucket.org/username/newName.git`
