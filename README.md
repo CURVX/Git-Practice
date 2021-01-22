@@ -18,6 +18,57 @@
 ## Quick Lins
 - [Pushing](https://github.com/CURVX/Git-Practice#pushing)
 
+### Setting username and email
+That will allow commits to have the right author name and email associated to them and has nothing to do with authentication when pushing to a remote repository.
+
+- To declare that identity for all repositories, use `git config--global`
+
+```
+git config--global user.name "Your Name"
+git config--global user.email mail@example.com
+```
+- To declare an identity for a single repository, use `git config` inside a repo
+
+```
+cd/path/to/my/repo
+git config user.name "Your Login At Work"
+git config user.email mail_at_work@example.com
+```
+
+### Log, shortlog and show
+
+- `git log` : will display all your commits with the author and hash
+- `git log -2` : list last 2 commit logs
+- `git log --oneline` : will show all of your commits with only the first part of the hash and the commit message
+- `git log -2 --oneline` : last 2 commit logs oneline
+- `git shortlog` :  list of all commits made per committe
+- `git show <hash>` : view contents of a single commit
+
+#### Show the total number of commits per author
+- `git shortlog -s` : provides the author names and number of commits by each one
+- `git shortlog -s--all` : provides the author names and number of commits by each one on all branches
+- `git shortlog-sn` : Names and Number of commits
+- `git shortlog-sne` : Names along with their email ids and the Number of commits
+
+### Remote
+- `git remote` : shows the short name of each remote handle
+- `git remote -v` : detailed information includes the URL and type of remote(push or pull)
+- `git remote set-url`: 
+#### Change git repository name
+##### Change local setting
+- `git remote set-url origin https://username@bitbucket.org/username/newName.git`
+- `git remote -v` : to check again
+- `git push`
+#### Remove a Remote Repository
+- `git remote rm <name>` : remove a remote repository
+#### Rename a Remote Repository
+- `git remote rename <old> <new>`
+#### Show more information about remoterepository
+- `git remote show origin`
+#### Add a Remote Repository
+- `git remote add <name> <url>`
+The command git fetch<name> can then be used to create and update remote-tracking branches<name>/<branch>
+
 ### Cloning Repositories
 
 The git clone command is used to copy an existing Git repository from a server to the local machine
@@ -84,31 +135,6 @@ Alternatively it is possible to just specify an output file with valid extension
 - `git archive --output=archive-HEAD.tar.gz HEAD`
 - `git archive --output=archive-HEAD.zip --prefix=src-directory-name HEAD` : When extracted all the files will be extracted inside a directory named src-directory-name in the current directory.
 
-### Remote
-- `git remote` : shows the short name of each remote handle
-- `git remote -v` : detailed information includes the URL and type of remote(push or pull)
-- `git remote set-url`: 
-#### Change git repository name
-##### Change local setting
-- `git remote set-url origin https://username@bitbucket.org/username/newName.git`
-- `git remote -v` : to check again
-- `git push`
-#### Remove a Remote Repository
-- `git remote rm <name>` : remove a remote repository
-#### Rename a Remote Repository
-- `git remote rename <old> <new>`
-#### Show more information about remoterepository
-- `git remote show origin`
-#### Add a Remote Repository
-- `git remote add <name> <url>`
-The command git fetch<name> can then be used to create and update remote-tracking branches<name>/<branch>
-
-
-#### Show the total number of commits per author
-- `git shortlog-s` : provides the author names and number of commits by each one
-- `git shortlog-s--all` : provides the author names and number of commits by each one on all branches
-- `git shortlog-sn` : Names and Number of commits
-- `git shortlog-sne` : Names along with their email ids and the Number of commits
 
 ### Git useful notes:
 git does not recognice the concept of folders, it just works with files and their filepaths. This means git does not track empty folders.
