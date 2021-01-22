@@ -115,7 +115,15 @@ This means that if the earlier commit had already been pushed, after amending it
 
 - `git commit -m "Commit summary" -m "More detailed description follows here"` : can pass in multiple -m arguments
 
+### Creating an empty commit
 
+- `git commit -m "This is a blank commit" --allow-empty` : able to easily create commits without having to edit/touch a dummy file.
+
+The `--allow-empty` commit will bypass the check.
+
+### Committing on behalf of someone else
+
+- `git commit-m "msg" --author "John Smith <johnsmith@example.com>"` : can give them credit with the --author option.
 
 ## > Cloning Repositories
 
