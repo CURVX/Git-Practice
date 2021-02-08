@@ -64,7 +64,7 @@ git config user.email mail_at_work@example.com
 - `git shortlog-sn` : Names and Number of commits
 - `git shortlog-sne` : Names along with their email ids and the Number of commits
 
-Go [:arrow_up:]https://github.com/CURVX/Git-Practice#-quick-links
+Go [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links)
 
 <hr>
 
@@ -85,7 +85,7 @@ Go [:arrow_up:]https://github.com/CURVX/Git-Practice#-quick-links
 - `git remote add <shortname> <url>`
 The command git fetch<name> can then be used to create and update remote-tracking branches<name>/<branch>
 
-Go [:arrow_up:]https://github.com/CURVX/Git-Practice#-quick-links
+Go [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links)
 
 <hr>
 
@@ -95,7 +95,7 @@ Go [:arrow_up:]https://github.com/CURVX/Git-Practice#-quick-links
 - `git diff` : displays what will be committed
 - `git rm --cached <filename>` : delete the file from git without removing it from disk
 
-Go [:arrow_up:]https://github.com/CURVX/Git-Practice#-quick-links
+Go [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links)
 
 <hr>
 
