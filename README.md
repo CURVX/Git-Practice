@@ -2,7 +2,7 @@
 - `rmdir <directory>` : needs to be an empty directory
 - `rm -rf <nonEmpty_directory>` : deletes the non-empty directory recursively without prompting anything.
 
-
+<hr>
 
 ## > Git useful commands:
 - `git init` : creates a hidden folder, .git, needed for Git to work.
@@ -16,10 +16,20 @@
 - `git branch -d/D <branchName>` : delete your local branch
 - `git log --oneline` : will show all of your commits with only the first part of the hash and the commit message
 
+<hr>
+
 ## > Quick Links
 - [Pushing](https://github.com/CURVX/Git-Practice#-pushing)
 - [Renaming](https://github.com/CURVX/Git-Practice#-renaming)
 - [Branching](https://github.com/CURVX/Git-Practice#-branching)
+- [Stashing](https://github.com/CURVX/Git-Practice#-stashing)
+
+## > FAQ
+- [How to change commit message](https://github.com/CURVX/Git-Practice#how-to-change-commit-message)
+- [How to merge an orphan branch into master](https://github.com/CURVX/Git-Practice#how-to-merge-an-orphan-branch-into-master)
+- [How to move your work in progress to another branch](https://github.com/CURVX/Git-Practice#how-to-move-your-work-in-progress-to-another-branch)
+
+<hr>
 
 ## > Setting username and email
 That will allow commits to have the right author name and email associated to them and has nothing to do with authentication when pushing to a remote repository.
@@ -37,6 +47,7 @@ cd/path/to/my/repo
 git config user.name "Your Login At Work"
 git config user.email mail_at_work@example.com
 ```
+<hr>
 
 ## > Log, shortlog and show
 
@@ -52,6 +63,8 @@ git config user.email mail_at_work@example.com
 - `git shortlog -s--all` : provides the author names and number of commits by each one on all branches
 - `git shortlog-sn` : Names and Number of commits
 - `git shortlog-sne` : Names along with their email ids and the Number of commits
+
+<hr>
 
 ## > Remote
 - `git remote` : shows the short name of each remote handle
@@ -70,6 +83,7 @@ git config user.email mail_at_work@example.com
 - `git remote add <shortname> <url>`
 The command git fetch<name> can then be used to create and update remote-tracking branches<name>/<branch>
 
+<hr>
 
 ## > Staging
 - `git add .`: will stage all changes to files in the current directory
@@ -77,12 +91,14 @@ The command git fetch<name> can then be used to create and update remote-trackin
 - `git diff` : displays what will be committed
 - `git rm --cached <filename>` : delete the file from git without removing it from disk
 
+<hr>
+
 ## > Undoing
 To jump back to a previous commit, first find the commit's hash using `git log`.
-- `git reset--soft <hash>` : To roll back to a previous commit <hash> while keeping the changes
-- `git reset--soft HEAD~<n>` : roll back to last commit, here <n> is the value for unwinding the last n commits
-- `git reset--hard <hash>` : to permanently discard any changes made after a specific commit
-- `git reset--hard HEAD~<n>` : permanetly discard any changes made after the last commit, here <n> is the value for unwinding the last n commits
+- `git reset --soft <hash>` : To roll back to a previous commit <hash> while keeping the changes
+- `git reset --soft HEAD~<n>` : roll back to last commit, here <n> is the value for unwinding the last n commits
+- `git reset --hard <hash>` : to permanently discard any changes made after a specific commit
+- `git reset --hard HEAD~<n>` : permanetly discard any changes made after the last commit, here <n> is the value for unwinding the last n commits
 
 While you can recover the discarded commits using `reflog` and `reset`, uncommitted changes cannot be recovered. Use `git stash`; `git reset` instead of `git reset --hard` to be safe.
 
@@ -93,11 +109,15 @@ While you can recover the discarded commits using `reflog` and `reset`, uncommit
 - `git checkout HEAD@{3}` : to create a new branch. Now you could delete the screwed up branch OR
 - `git reset --hard HEAD@{3}` : reset directly back to a point in your `reflog`. There is no turning back so be 100% sure.
 
+<hr>
+
 ## > Merging
 
 - `git merge <another_branch>` : make sure you are in the branch that is getting merged into.
 - `git merge --abort` : after starting a merge, you might want to stop the merge and return everything to its pre-merge state
-- `git merge<branch_name>--no-ff-m"<commit message>"` : merge with a commit as default behaviour in fast-forward only updates the branch pointer without creating a merge commit.
+- `git merge <branch_name> --no-ff -m"<commit message>"` : merge with a commit as default behaviour in fast-forward only updates the branch pointer without creating a merge commit.
+
+<hr>
 
 ## > Committing
 
@@ -109,7 +129,11 @@ Commits with Git provide accountability by attributing authors with changes to c
 
 Note: This can also be used to edit an incorrect commit message. It will bring up the default editor and allow one to change the prior message.
 
+### How to change commit message
+
 - `git commit --amend -m "New message"` : specify the commit message
+
+![git amend](./git-amend.png)
 
 Note: Be aware that amending the most recent commit replaces it entirely and the previous commit is removedfrom the branch's history. This should be kept in mind when working with public repositories and on branches withother collaborators.
 
@@ -129,6 +153,8 @@ The `--allow-empty` commit will bypass the check.
 
 - `git commit-m "msg" --author "John Smith <johnsmith@example.com>"` : can give them credit with the --author option.
 
+<hr>
+
 ## > Cloning Repositories
 
 The git clone command is used to copy an existing Git repository from a server to the local machine
@@ -136,16 +162,26 @@ The git clone command is used to copy an existing Git repository from a server t
 - `git clone https://github.com/username/projectname.git`: clones the repo in your current directory.
 - `git clone https://github.com/username/projectname.git MyFolder` : clones the repo into MyFolder in your current directory.
 
+### Shallow Clone
+- `git clone [repo_url] --depth 1` :  will fetch just the last commit from the remote repository 
+
+### Clone a specific branch
+- `git clone --branch/-b <branch name> <url> [directory]` 
+
+<hr>
+
 ## > Aliases TO_DO
 
 ## > Rebasing TO_DO
+
+<hr>
 
 ## > Branching
 
 - `git branch <name>` : create a new branch while staying on the current branch
 - `git checkout <name>` : switch to an existing branch
 - `git checkout -b <name>` : create a new branch and switch to it
-- `git branch  <name> [<start-point>]`: <start-point> can be another branch name, commit SHA, HEAD or a tag name
+- `git branch <name> [<start-point>]` : <start-point> can be another branch name, commit SHA, HEAD or a tag name
 Example:
 ```
 git checkout-b<name> some_other_branch
@@ -166,11 +202,51 @@ git checkout-b<name> v1.0.5
 ### Orphan branch
 - `git checkout --orphan new-orphan-branch` : branch with no parent commit
 
+### How to merge an orphan branch into master
+- After a git pull or git merge command, add the following tag:
+`git pull origin master --allow-unrelated-histories`
 
-## > Stashing TO_DO
+<hr>
+
+## > Stashing
+Code not ready to commit but needs to be saved to be applied later. That's where git `git stash` comes in. Stashing does not remember the branch from where the work has been stashed so checking out to a new branch and applying those stashed changes using `git stash apply` is possible.
+
+- `git stash` : stashes all tracked files. 
+- `git stash --include-untracked/-u` : include all untracked files
+
+- `git stash save "message"` : message with your stash to make it identifiable
+- `git stash -keep-index/-k` : leave the staging area in current state after stash
+
+### List saved stashes
+- `git stash list` : all stashes in the stack in reverse chronological order
+
+### Show Stash
+- `git stash show` : show the changes saved in the last stash
+- `git stash show stash@{n}` : specific stash
+- `git stash show -p stash@{n}` : content of the specific stash
+
+### Apply and remove stash
+
+- `git stash pop` : apply last stash and remove it from the stack
+- `git stash apply` : apply last stash without removing it
+- `git stash apply stash@{n}` : apply a specific stash
+- `git stash pop stash@{n}` : apply a specific stash and remove it from the stack
+
+- To remove all stash `git stash clear`
+- Remove the last stash `git stash drop`
+- `git stash drop stash@{n}` : remove a specific stash
+
+### How to move your work in progress to another branch
+```bash
+git stash
+git checkout correct-branch
+git stash pop
+```
+
+<hr>
 
 ## > Renaming
-- `git branch-m old_name new_name`: renaming a local branch
+- `git branch -m old_name new_name`: renaming a local branch
 ### Renaming a local and the remote branch:
 - Checkout from the branch
 then rename the local branch, delete the old remote and set the new renamed branch as upstream:
@@ -180,6 +256,7 @@ git branch -m new_branch
 git push origin :old_branch // git push origin -d old_branch
 git push--set-upstream origin new_branch
 ```
+<hr>
 
 ## > Pushing
 - `git push<remotename> <object>:<remotebranchname>` : general syntax
@@ -207,6 +284,8 @@ Using this command may cause the remote repository to lose commits. Moreover, it
 against doing a force push if you are sharing this remote repository with others, since their history will retain every
 overwritten commit, thus rending their work out of sync with the remote repository.
 
+<hr>
+
 ## > Blaming
 
 
@@ -223,6 +302,8 @@ overwritten commit, thus rending their work out of sync with the remote reposito
 Alternatively it is possible to just specify an output file with valid extension and the format and compression typewill be inferred from it
 - `git archive --output=archive-HEAD.tar.gz HEAD`
 - `git archive --output=archive-HEAD.zip --prefix=src-directory-name HEAD` : When extracted all the files will be extracted inside a directory named src-directory-name in the current directory.
+
+<hr>
 
 
 ## > Git useful notes:
@@ -252,7 +333,7 @@ TASK-123: Implement login through OAuth
 TASK-124: Add auto minification of JS/CSS files
 TASK-125: Fix minifier error when name > 200 chars
 ```
-[Link 1](https://udacity.github.io/git-styleguide/)
-[Link 2](https://chris.beams.io/posts/git-commit/)
+[Git: Styleguide](https://udacity.github.io/git-styleguide/)<br>
+[Git: Guide to commit message by Chris Beams](https://chris.beams.io/posts/git-commit/)
 
 
