@@ -64,7 +64,7 @@ git config user.email mail_at_work@example.com
 - `git shortlog-sn` : Names and Number of commits
 - `git shortlog-sne` : Names along with their email ids and the Number of commits
 
-Go [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links)
+Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
 <hr>
 
@@ -85,7 +85,7 @@ Go [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links)
 - `git remote add <shortname> <url>`
 The command git fetch<name> can then be used to create and update remote-tracking branches<name>/<branch>
 
-Go [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links)
+Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
 <hr>
 
@@ -95,7 +95,7 @@ Go [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links)
 - `git diff` : displays what will be committed
 - `git rm --cached <filename>` : delete the file from git without removing it from disk
 
-Go [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links)
+Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
 <hr>
 
@@ -114,6 +114,8 @@ While you can recover the discarded commits using `reflog` and `reset`, uncommit
 
 - `git checkout HEAD@{3}` : to create a new branch. Now you could delete the screwed up branch OR
 - `git reset --hard HEAD@{3}` : reset directly back to a point in your `reflog`. There is no turning back so be 100% sure.
+
+Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
 <hr>
 
@@ -159,6 +161,8 @@ The `--allow-empty` commit will bypass the check.
 
 - `git commit-m "msg" --author "John Smith <johnsmith@example.com>"` : can give them credit with the --author option.
 
+Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+
 <hr>
 
 ## > Cloning Repositories
@@ -173,6 +177,8 @@ The git clone command is used to copy an existing Git repository from a server t
 
 ### Clone a specific branch
 - `git clone --branch/-b <branch name> <url> [directory]` 
+
+Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
 <hr>
 
@@ -212,6 +218,8 @@ git checkout-b<name> v1.0.5
 - After a git pull or git merge command, add the following tag:
 `git pull origin master --allow-unrelated-histories`
 
+Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+
 <hr>
 
 ## > Stashing
@@ -248,6 +256,8 @@ git stash
 git checkout correct-branch
 git stash pop
 ```
+
+Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
 <hr>
 
@@ -290,6 +300,8 @@ Using this command may cause the remote repository to lose commits. Moreover, it
 against doing a force push if you are sharing this remote repository with others, since their history will retain every
 overwritten commit, thus rending their work out of sync with the remote repository.
 
+Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+
 <hr>
 
 ## > Blaming
@@ -308,6 +320,8 @@ overwritten commit, thus rending their work out of sync with the remote reposito
 Alternatively it is possible to just specify an output file with valid extension and the format and compression typewill be inferred from it
 - `git archive --output=archive-HEAD.tar.gz HEAD`
 - `git archive --output=archive-HEAD.zip --prefix=src-directory-name HEAD` : When extracted all the files will be extracted inside a directory named src-directory-name in the current directory.
+
+Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
 <hr>
 
@@ -343,3 +357,4 @@ TASK-125: Fix minifier error when name > 200 chars
 [Git: Guide to commit message by Chris Beams](https://chris.beams.io/posts/git-commit/)
 
 
+Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
