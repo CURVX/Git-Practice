@@ -49,7 +49,7 @@ git config user.email mail_at_work@example.com
 ```
 <hr>
 
-## > Log, shortlog and show
+## > Log, shortlog and show 
 
 - `git log` : will display all your commits with the author and hash
 - `git log -2` : list last 2 commit logs
@@ -63,6 +63,8 @@ git config user.email mail_at_work@example.com
 - `git shortlog -s--all` : provides the author names and number of commits by each one on all branches
 - `git shortlog-sn` : Names and Number of commits
 - `git shortlog-sne` : Names along with their email ids and the Number of commits
+
+Go [:arrow_up:]https://github.com/CURVX/Git-Practice#-quick-links
 
 <hr>
 
@@ -83,6 +85,8 @@ git config user.email mail_at_work@example.com
 - `git remote add <shortname> <url>`
 The command git fetch<name> can then be used to create and update remote-tracking branches<name>/<branch>
 
+Go [:arrow_up:]https://github.com/CURVX/Git-Practice#-quick-links
+
 <hr>
 
 ## > Staging
@@ -90,6 +94,8 @@ The command git fetch<name> can then be used to create and update remote-trackin
 - `git reset <filePath>` : unstage a file that contains changes
 - `git diff` : displays what will be committed
 - `git rm --cached <filename>` : delete the file from git without removing it from disk
+
+Go [:arrow_up:]https://github.com/CURVX/Git-Practice#-quick-links
 
 <hr>
 
