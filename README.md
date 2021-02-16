@@ -11,6 +11,7 @@
 - `git add .` : Adds all files
 - `git commit -m '<topic> -m '<description>'` : commit files staged with a message
 - `git checkout -b <branchName>` : create a branch and switch to it
+- [link local with remote repository](https://github.com/CURVX/Git-Practice#add-a-remote-repository)
 - `git push -u origin master` : push your branch to remote ( -u as a shorthand for --set-upstream)
 - `git push origin -d <branchName>` : delete your remote branch
 - `git branch -d/D <branchName>` : delete your local branch
@@ -61,8 +62,8 @@ git config user.email mail_at_work@example.com
 ### Show the total number of commits per author
 - `git shortlog -s` : provides the author names and number of commits by each one
 - `git shortlog -s--all` : provides the author names and number of commits by each one on all branches
-- `git shortlog-sn` : Names and Number of commits
-- `git shortlog-sne` : Names along with their email ids and the Number of commits
+- `git shortlog -sn` : Names and Number of commits
+- `git shortlog -sne` : Names along with their email ids and the Number of commits
 
 Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
@@ -123,7 +124,7 @@ Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) ar
 
 - `git merge <another_branch>` : make sure you are in the branch that is getting merged into.
 - `git merge --abort` : after starting a merge, you might want to stop the merge and return everything to its pre-merge state
-- `git merge <branch_name> --no-ff -m"<commit message>"` : merge with a commit as default behaviour in fast-forward only updates the branch pointer without creating a merge commit.
+- `git merge <branch_name> --no-ff -m "<commit message>"` : merge with a commit as default behaviour in fast-forward only updates the branch pointer without creating a merge commit.
 
 <hr>
 
@@ -159,7 +160,7 @@ The `--allow-empty` commit will bypass the check.
 
 ### Committing on behalf of someone else
 
-- `git commit-m "msg" --author "John Smith <johnsmith@example.com>"` : can give them credit with the --author option.
+- `git commit -m "msg" --author "John Smith <johnsmith@example.com>"` : can give them credit with the --author option.
 
 Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
@@ -275,7 +276,7 @@ git push--set-upstream origin new_branch
 <hr>
 
 ## > Pushing
-- `git push<remotename> <object>:<remotebranchname>` : general syntax
+- `git push <remotename> <object>:<remotebranchname>` : general syntax
 ### Delete remote branch
 - `git push <remotename> :<remotebranchname>` : Deleting the remote branch is the equivalent of pushing an empty object to it.
 Example: `git push origin :wip-yourname`: will delete the remote branch wip-yourname
@@ -291,11 +292,11 @@ To push to a repository that you haven't made yet, or is empty:
 - Create the repository on GitHub (if applicable).
 - Copy the url given to you, in the form `https://github.com/USERNAME/REPO_NAME.git`.
 - Go to your local repository, and execute `git remote add origin URL`.
-- To verify it was added, run `git remote-v` Run git push origin master.
+- To verify it was added, run `git remote -v` Run git push origin master.
 Your code should now be on GitHub
 
 ### Force pushing
-- `git push-f`: will overwrite any remote changes and your remote will match your local
+- `git push -f`: will overwrite any remote changes and your remote will match your local
 Using this command may cause the remote repository to lose commits. Moreover, it is strongly advised
 against doing a force push if you are sharing this remote repository with others, since their history will retain every
 overwritten commit, thus rending their work out of sync with the remote repository.
@@ -308,7 +309,7 @@ Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) ar
 
 
 ### Only show certain lines
-- `git blame -L<start>,<end>` : Example `git blame -L 10,30`
+- `git blame -L <start>,<end>` : Example `git blame -L 10,30`
 - `git blame -L /regex/` : Example `git blame -L /void main/` and `git blame -L 46, /void foo/`
 
 ### To find out who changed a file
@@ -332,7 +333,7 @@ If you want to keep an directory that your application rely on for example 'buil
 
 ```
 git add build/.gitkeep
-git commit-m 'Keep the build directory around'
+git commit -m 'Keep the build directory around'
 ```
 
 ### Good commit messages
@@ -353,8 +354,8 @@ TASK-123: Implement login through OAuth
 TASK-124: Add auto minification of JS/CSS files
 TASK-125: Fix minifier error when name > 200 chars
 ```
-[Git: Styleguide](https://udacity.github.io/git-styleguide/)<br>
-[Git: Guide to commit message by Chris Beams](https://chris.beams.io/posts/git-commit/)
+- [Git: Styleguide](https://udacity.github.io/git-styleguide/)<br>
+- [Git: Guide to commit message by Chris Beams](https://chris.beams.io/posts/git-commit/)
 
 
 Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
