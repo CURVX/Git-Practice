@@ -1,17 +1,19 @@
 ## > Useful commands
+
 - `rmdir <directory>` : needs to be an empty directory
 - `rm -rf <nonEmpty_directory>` : deletes the non-empty directory recursively without prompting anything.
 
 <hr>
 
 ## > Git useful commands:
+
 - `git init` : creates a hidden folder, .git, needed for Git to work.
 - `git status` : review the list of files
-- `git add <fileName1> <fileName2> <...>` : stage individual files 
+- `git add <fileName1> <fileName2> <...>` : stage individual files
 - `git add .` : Adds all files
 - `git commit -m '<topic> -m '<description>'` : commit files staged with a message
 - `git checkout -b <branchName>` : create a branch and switch to it
-- [link local with remote repository](https://github.com/CURVX/Git-Practice#add-a-remote-repository)
+- `git remote add origin <remoteURL>`: link your local git with remote github repo
 - `git push -u origin master` : push your branch to remote ( -u as a shorthand for --set-upstream)
 - `git push origin -d <branchName>` : delete your remote branch
 - `git branch -d/D <branchName>` : delete your local branch
@@ -20,12 +22,15 @@
 <hr>
 
 ## > Quick Links
+
+- [Remote](https://github.com/CURVX/Git-Practice#-remote)
 - [Pushing](https://github.com/CURVX/Git-Practice#-pushing)
 - [Renaming](https://github.com/CURVX/Git-Practice#-renaming)
 - [Branching](https://github.com/CURVX/Git-Practice#-branching)
 - [Stashing](https://github.com/CURVX/Git-Practice#-stashing)
 
 ## > FAQ
+
 - [How to change commit message](https://github.com/CURVX/Git-Practice#how-to-change-commit-message)
 - [How to merge an orphan branch into master](https://github.com/CURVX/Git-Practice#how-to-merge-an-orphan-branch-into-master)
 - [How to move your work in progress to another branch](https://github.com/CURVX/Git-Practice#how-to-move-your-work-in-progress-to-another-branch)
@@ -33,14 +38,16 @@
 <hr>
 
 ## > Setting username and email
+
 That will allow commits to have the right author name and email associated to them and has nothing to do with authentication when pushing to a remote repository.
 
-- To declare that identity for all repositories, use `git config--global`
+- To declare that identity for all repositories, use `git config --global`
 
 ```
-git config--global user.name "Your Name"
-git config--global user.email mail@example.com
+git config --global user.name "Your Name"
+git config --global user.email mail@example.com
 ```
+
 - To declare an identity for a single repository, use `git config` inside a repo
 
 ```
@@ -48,18 +55,20 @@ cd/path/to/my/repo
 git config user.name "Your Login At Work"
 git config user.email mail_at_work@example.com
 ```
+
 <hr>
 
-## > Log, shortlog and show 
+## > Log, shortlog and show
 
 - `git log` : will display all your commits with the author and hash
 - `git log -2` : list last 2 commit logs
 - `git log --oneline` : will show all of your commits with only the first part of the hash and the commit message
 - `git log -2 --oneline` : last 2 commit logs oneline
-- `git shortlog` :  list of all commits made per committe
+- `git shortlog` : list of all commits made per committe
 - `git show <hash>` : view contents of a single commit
 
 ### Show the total number of commits per author
+
 - `git shortlog -s` : provides the author names and number of commits by each one
 - `git shortlog -s--all` : provides the author names and number of commits by each one on all branches
 - `git shortlog -sn` : Names and Number of commits
@@ -70,27 +79,36 @@ Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) ar
 <hr>
 
 ## > Remote
+
 - `git remote` : shows the short name of each remote handle
 - `git remote -v` : detailed information includes the URL and type of remote(push or pull)
 - `git remote set-url <origin/alias> https://github.com/username/repo.git`: change 'origin' remote's URL/ set URL for a specific remote
 - `git remote get-url <name>` : url for an existing remote
 - `git remote show origin` : lists the URL for the remote repository as well as the tracking branch information
+
 ### Remove a Remote Repository
+
 - `git remote rm <name>` : remove a remote repository
+
 ### Rename a Remote Repository // Didn't worked!
+
 - `git remote rename <old> <new>` : change the alias/shortname, for example; origin to destination
 
 ### Show more information about remote Repository
+
 - `git remote show origin`
+
 ### Add a Remote Repository
+
 - `git remote add <shortname> <url>`
-The command git fetch<name> can then be used to create and update remote-tracking branches<name>/<branch>
+  The command git fetch<name> can then be used to create and update remote-tracking branches<name>/<branch>
 
 Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
 <hr>
 
 ## > Staging
+
 - `git add .`: will stage all changes to files in the current directory
 - `git reset <filePath>` : unstage a file that contains changes
 - `git diff` : displays what will be committed
@@ -101,7 +119,9 @@ Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) ar
 <hr>
 
 ## > Undoing
+
 To jump back to a previous commit, first find the commit's hash using `git log`.
+
 - `git reset --soft <hash>` : To roll back to a previous commit <hash> while keeping the changes
 - `git reset --soft HEAD~<n>` : roll back to last commit, here <n> is the value for unwinding the last n commits
 - `git reset --hard <hash>` : to permanently discard any changes made after a specific commit
@@ -174,10 +194,12 @@ The git clone command is used to copy an existing Git repository from a server t
 - `git clone https://github.com/username/projectname.git MyFolder` : clones the repo into MyFolder in your current directory.
 
 ### Shallow Clone
-- `git clone [repo_url] --depth 1` :  will fetch just the last commit from the remote repository 
+
+- `git clone [repo_url] --depth 1` : will fetch just the last commit from the remote repository
 
 ### Clone a specific branch
-- `git clone --branch/-b <branch name> <url> [directory]` 
+
+- `git clone --branch/-b <branch name> <url> [directory]`
 
 Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
@@ -195,47 +217,56 @@ Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) ar
 - `git checkout <name>` : switch to an existing branch
 - `git checkout -b <name>` : create a new branch and switch to it
 - `git branch <name> [<start-point>]` : <start-point> can be another branch name, commit SHA, HEAD or a tag name
-Example:
+  Example:
+
 ```
 git checkout-b<name> some_other_branch
 git checkout-b<name> af295
 git checkout-b<name> HEAD~2 // Go back 2 commits, you will lose uncommitted work
 git checkout-b<name> v1.0.5
 ```
+
 - `git checkout -` : quick switch to previous branch
 
 ### Delete a remote branch
+
 - `git push origin :<branchName>` : delete a branch on the origin remote repository
 - `git push origin -d <branchName>`
 
 ### Delete a local branch
+
 - `git branch -d <branchName>` : not delete if it has unmerged changes
 - `git branch -D <branchName>` : deletes even if it has unmerged changes
 
 ### Orphan branch
+
 - `git checkout --orphan new-orphan-branch` : branch with no parent commit
 
 ### How to merge an orphan branch into master
+
 - After a git pull or git merge command, add the following tag:
-`git pull origin master --allow-unrelated-histories`
+  `git pull origin master --allow-unrelated-histories`
 
 Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
 <hr>
 
 ## > Stashing
+
 Code not ready to commit but needs to be saved to be applied later. That's where git `git stash` comes in. Stashing does not remember the branch from where the work has been stashed so checking out to a new branch and applying those stashed changes using `git stash apply` is possible.
 
-- `git stash` : stashes all tracked files. 
+- `git stash` : stashes all tracked files.
 - `git stash --include-untracked/-u` : include all untracked files
 
 - `git stash save "message"` : message with your stash to make it identifiable
 - `git stash -keep-index/-k` : leave the staging area in current state after stash
 
 ### List saved stashes
+
 - `git stash list` : all stashes in the stack in reverse chronological order
 
 ### Show Stash
+
 - `git stash show` : show the changes saved in the last stash
 - `git stash show stash@{n}` : specific stash
 - `git stash show -p stash@{n}` : content of the specific stash
@@ -252,6 +283,7 @@ Code not ready to commit but needs to be saved to be applied later. That's where
 - `git stash drop stash@{n}` : remove a specific stash
 
 ### How to move your work in progress to another branch
+
 ```bash
 git stash
 git checkout correct-branch
@@ -263,43 +295,57 @@ Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) ar
 <hr>
 
 ## > Renaming
+
 - `git branch -m old_name new_name`: renaming a local branch
+
 ### Renaming a local and the remote branch:
+
 - Checkout from the branch
-then rename the local branch, delete the old remote and set the new renamed branch as upstream:
+  then rename the local branch, delete the old remote and set the new renamed branch as upstream:
+
 ```
 git checkout old_branch
 git branch -m new_branch
 git push origin :old_branch // git push origin -d old_branch
 git push--set-upstream origin new_branch
 ```
+
 <hr>
 
 ## > Pushing
+
 - `git push <remotename> <object>:<remotebranchname>` : general syntax
+
 ### Delete remote branch
+
 - `git push <remotename> :<remotebranchname>` : Deleting the remote branch is the equivalent of pushing an empty object to it.
-Example: `git push origin :wip-yourname`: will delete the remote branch wip-yourname
-Instead of using the colon, you can also use the `--delete` flag, which is better readable in some cases.
-Example: `git push origin --delete wip-yourname`
+  Example: `git push origin :wip-yourname`: will delete the remote branch wip-yourname
+  Instead of using the colon, you can also use the `--delete` flag, which is better readable in some cases.
+  Example: `git push origin --delete wip-yourname`
 
 - `git push origin feature_x` : to push to a specific branch, for example: feature_x
+
 ### Set the remote tracking branch
+
 - `git push --set-upstream origin master` OR
 - `git push -u origin master` ( -u as a shorthand for --set-upstream)
+
 ### Pushing to a new repository
+
 To push to a repository that you haven't made yet, or is empty:
+
 - Create the repository on GitHub (if applicable).
 - Copy the url given to you, in the form `https://github.com/USERNAME/REPO_NAME.git`.
 - Go to your local repository, and execute `git remote add origin URL`.
 - To verify it was added, run `git remote -v` Run git push origin master.
-Your code should now be on GitHub
+  Your code should now be on GitHub
 
 ### Force pushing
+
 - `git push -f`: will overwrite any remote changes and your remote will match your local
-Using this command may cause the remote repository to lose commits. Moreover, it is strongly advised
-against doing a force push if you are sharing this remote repository with others, since their history will retain every
-overwritten commit, thus rending their work out of sync with the remote repository.
+  Using this command may cause the remote repository to lose commits. Moreover, it is strongly advised
+  against doing a force push if you are sharing this remote repository with others, since their history will retain every
+  overwritten commit, thus rending their work out of sync with the remote repository.
 
 Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
 
@@ -307,18 +353,20 @@ Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) ar
 
 ## > Blaming
 
-
 ### Only show certain lines
+
 - `git blame -L <start>,<end>` : Example `git blame -L 10,30`
 - `git blame -L /regex/` : Example `git blame -L /void main/` and `git blame -L 46, /void foo/`
 
 ### To find out who changed a file
+
 - `git blame <filename>` : shows the author and commit per line of specified file
 - `git blame -L 1,10 test.c` : limits the selection of lines by specified range
 
 ### Archive
+
 - `git archive --format zip HEAD > archive-HEAD.zip` : creates a zip archive of current HEAD revision
-Alternatively it is possible to just specify an output file with valid extension and the format and compression typewill be inferred from it
+  Alternatively it is possible to just specify an output file with valid extension and the format and compression typewill be inferred from it
 - `git archive --output=archive-HEAD.tar.gz HEAD`
 - `git archive --output=archive-HEAD.zip --prefix=src-directory-name HEAD` : When extracted all the files will be extracted inside a directory named src-directory-name in the current directory.
 
@@ -326,8 +374,8 @@ Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) ar
 
 <hr>
 
-
 ## > Git useful notes:
+
 git does not recognice the concept of folders, it just works with files and their filepaths. This means git does not track empty folders.
 If you want to keep an directory that your application rely on for example 'build', a convention is to include a '.gitkeep' file inside the directory and let Git track that file.
 
@@ -339,6 +387,7 @@ git commit -m 'Keep the build directory around'
 ### Good commit messages
 
 The seven rules of a great git commit message
+
 1. Separate the subject line from body with a blank line.
 2. Limit the subject line to 50 characters.
 3. Capitalize the subject line.
@@ -354,8 +403,8 @@ TASK-123: Implement login through OAuth
 TASK-124: Add auto minification of JS/CSS files
 TASK-125: Fix minifier error when name > 200 chars
 ```
+
 - [Git: Styleguide](https://udacity.github.io/git-styleguide/)<br>
 - [Git: Guide to commit message by Chris Beams](https://chris.beams.io/posts/git-commit/)
-
 
 Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
