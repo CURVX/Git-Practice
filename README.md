@@ -1,16 +1,27 @@
+## .gitignore
+
+The `.gitignore` file is just a simple text file where we can add files that we want git to ignore.
+
+```
+node_modules
+*.pyc
+```
+
+---
+
 ## > Useful commands
 
 - `rmdir <directory>` : needs to be an empty directory
 - `rm -rf <nonEmpty_directory>` : deletes the non-empty directory recursively without prompting anything.
 
-<hr>
+---
 
 ## > Git useful commands:
 
 - `git init` : creates a hidden folder, .git, needed for Git to work.
 - `git status` : review the list of files
 - `git add <fileName1> <fileName2> <...>` : stage individual files
-- `git add .` : Adds all files
+- `git add .` : track and add all files to staging
 - `git commit -m '<topic> -m '<description>'` : commit files staged with a message
 - `git checkout -b <branchName>` : create a branch and switch to it
 - `git remote add origin <remoteURL>`: link your local git with remote github repo
@@ -18,24 +29,30 @@
 - `git push origin -d <branchName>` : delete your remote branch
 - `git branch -d/D <branchName>` : delete your local branch
 - `git log --oneline` : will show all of your commits with only the first part of the hash and the commit message
+- `git pull` : pull from remote repo, if upstream is set
+- `git pull origin <branchName>` : pull from remote repo specific branch and if upstream is not set
+- `git reset` : unstage the staged files
+- `git reset <fileName>` : unstage a specific file
+- `git reset HEAD~1` : unstage and uncommit the last commit, soft reset
+- `git reset --HARD <hash>/<HEAD~n>` : hard reset commit
 
-<hr>
+---
 
 ## > Quick Links
 
-- [Remote](https://github.com/CURVX/Git-Practice#-remote)
-- [Pushing](https://github.com/CURVX/Git-Practice#-pushing)
-- [Renaming](https://github.com/CURVX/Git-Practice#-renaming)
-- [Branching](https://github.com/CURVX/Git-Practice#-branching)
-- [Stashing](https://github.com/CURVX/Git-Practice#-stashing)
+| [Staging](#-staging) | [Remote](#-remote) | [Pushing](#-pushing) | [Undoing](#-undoing) | [Renaming](#-renaming) | [Branching](#-branching) | [Stashing](#-stashing) |
+| -------------------- | ------------------ | -------------------- | -------------------- | ---------------------- | ------------------------ | ---------------------- |
 
 ## > FAQ
 
-- [How to change commit message](https://github.com/CURVX/Git-Practice#how-to-change-commit-message)
-- [How to merge an orphan branch into master](https://github.com/CURVX/Git-Practice#how-to-merge-an-orphan-branch-into-master)
-- [How to move your work in progress to another branch](https://github.com/CURVX/Git-Practice#how-to-move-your-work-in-progress-to-another-branch)
+- [How to change commit message?](#how-to-change-commit-message)
+- [How to merge an orphan branch into master?](#how-to-merge-an-orphan-branch-into-master)
+- [How to move your work in progress to another branch?](#how-to-move-your-work-in-progress-to-another-branch)
+- [How to move commit from one branch to another (cherry-pick)?](#cherry-pick)
+- [How to handle merge conflict?](#merge-conflict)
+- [How to create an empty commit?](#creating-an-empty-commit)
 
-<hr>
+---
 
 ## > Setting username and email
 
@@ -56,7 +73,7 @@ git config user.name "Your Login At Work"
 git config user.email mail_at_work@example.com
 ```
 
-<hr>
+---
 
 ## > Log, shortlog and show
 
@@ -74,9 +91,9 @@ git config user.email mail_at_work@example.com
 - `git shortlog -sn` : Names and Number of commits
 - `git shortlog -sne` : Names along with their email ids and the Number of commits
 
-Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
-<hr>
+---
 
 ## > Remote
 
@@ -103,42 +120,50 @@ Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) ar
 - `git remote add <shortname> <url>`
   The command git fetch<name> can then be used to create and update remote-tracking branches<name>/<branch>
 
-Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
-<hr>
+---
 
 ## > Staging
 
-- `git add .`: will stage all changes to files in the current directory
+- `git add --all/-A` : stage all modified, deleted, new and dot files in the entire working tree
+- `git add -A <directory>/` : stage all thats within that directory
+- `git add -u` : stage all modified and deleted files not untracked/new files in the entire working tree
+- `git add -u <directory>/` : stage only modified and deleted files within that directory
+- `git add *` : not recommended as it ignores dot files, deleted files and top level files of the working tree
+- `git add .` : will stage all changes to files in the current directory
 - `git reset <filePath>` : unstage a file that contains changes
 - `git diff` : displays what will be committed
+- `git diff <hash1> <hash2>` : difference between in code of 2 hashes
 - `git rm --cached <filename>` : delete the file from git without removing it from disk
 
-Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
-<hr>
+---
 
 ## > Undoing
 
 To jump back to a previous commit, first find the commit's hash using `git log`.
 
-- `git reset --soft <hash>` : To roll back to a previous commit <hash> while keeping the changes
-- `git reset --soft HEAD~<n>` : roll back to last commit, here <n> is the value for unwinding the last n commits
-- `git reset --hard <hash>` : to permanently discard any changes made after a specific commit
-- `git reset --hard HEAD~<n>` : permanetly discard any changes made after the last commit, here <n> is the value for unwinding the last n commits
+- `git reset --soft <hash>` : To roll back to a previous commit [hash] while keeping the changes in staged area, no work is lost
+- `git reset --soft HEAD~<n>` : roll back to last commit, here [n] is the value for unwinding the last n commits
+- `git reset <hash>` : similar to soft reset except files are put in working area or unstaged area
+- `git reset --hard <hash>` : to permanently discard any changes made after a specific commit, reverts tracked files back to the state they were and leaves untracked files alone
+- `git clean -df` : removes any untracked [d] directory [f] files
+- `git reset --hard HEAD~<n>` : permanetly discard any changes made after the last commit, here [n] is the value for unwinding the last n commits
 
 While you can recover the discarded commits using `reflog` and `reset`, uncommitted changes cannot be recovered. Use `git stash`; `git reset` instead of `git reset --hard` to be safe.
 
 ### Using reflog
 
-- `git reflog`: if you screw up a rebase, one option to start again is to go back to the commit (pre rebase). You can do this usingreflog (which has the history of everything you've done for the last 90 days - this can be configured)
+- `git reflog`: if you screw up a rebase, one option to start again is to go back to the commit (pre rebase). You can do this using reflog (which has the history of everything you've done for the last 90 days - this can be configured)
 
 - `git checkout HEAD@{3}` : to create a new branch. Now you could delete the screwed up branch OR
 - `git reset --hard HEAD@{3}` : reset directly back to a point in your `reflog`. There is no turning back so be 100% sure.
 
-Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
-<hr>
+---
 
 ## > Merging
 
@@ -146,7 +171,20 @@ Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) ar
 - `git merge --abort` : after starting a merge, you might want to stop the merge and return everything to its pre-merge state
 - `git merge <branch_name> --no-ff -m "<commit message>"` : merge with a commit as default behaviour in fast-forward only updates the branch pointer without creating a merge commit.
 
-<hr>
+### Merge conflict
+
+In case of a merge conflict,
+
+```bash
+<<<<<<< HEAD
+=======
+>>>>>>> <branchName>
+```
+
+- Clear these characters and proceed with `git commit`, no need for message, as this a merge-commit.
+- Something else will pop-up, just do `Shift + ;` and do `:wq` i,e; write & quit.
+
+---
 
 ## > Committing
 
@@ -164,13 +202,17 @@ Note: This can also be used to edit an incorrect commit message. It will bring u
 
 ![git amend](./git-amend.png)
 
-Note: Be aware that amending the most recent commit replaces it entirely and the previous commit is removedfrom the branch's history. This should be kept in mind when working with public repositories and on branches withother collaborators.
+Note: Be aware that amending the most recent commit replaces it entirely, hash is changed as commit message is part of the hash and the previous commit is removed from the branch's history. This should be kept in mind when working with public repositories and on branches with other collaborators.
 
 This means that if the earlier commit had already been pushed, after amending it you will have to `git push --force`.
 
 ### Commit message
 
 - `git commit -m "Commit summary" -m "More detailed description follows here"` : can pass in multiple -m arguments
+
+### Add and commit
+
+- `git commit -am <message>` : adds changes made to tracked (modified) files and commits them.
 
 ### Creating an empty commit
 
@@ -182,9 +224,15 @@ The `--allow-empty` commit will bypass the check.
 
 - `git commit -m "msg" --author "John Smith <johnsmith@example.com>"` : can give them credit with the --author option.
 
-Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+### Cherry-pick
 
-<hr>
+- `git log` to get the hash of the commit you would like to cherry-pick and copy first 6-7 characters.
+- `git checkout <branchName>` move to the barnch where you would like to copy/bring over that commit.
+- `git cherry-pick <hash>` will paste the commit to the branch but it still exists in the old branch.
+
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
+
+---
 
 ## > Cloning Repositories
 
@@ -201,29 +249,30 @@ The git clone command is used to copy an existing Git repository from a server t
 
 - `git clone --branch/-b <branch name> <url> [directory]`
 
-Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
-<hr>
+---
 
 ## > Aliases TO_DO
 
 ## > Rebasing TO_DO
 
-<hr>
+---
 
 ## > Branching
 
+- `git branch -a` : list all branch
 - `git branch <name>` : create a new branch while staying on the current branch
 - `git checkout <name>` : switch to an existing branch
 - `git checkout -b <name>` : create a new branch and switch to it
-- `git branch <name> [<start-point>]` : <start-point> can be another branch name, commit SHA, HEAD or a tag name
+- `git branch <name> [<start-point>]` : start-point -> can be another branch name, commit SHA, HEAD or a tag name
   Example:
 
 ```
-git checkout-b<name> some_other_branch
-git checkout-b<name> af295
-git checkout-b<name> HEAD~2 // Go back 2 commits, you will lose uncommitted work
-git checkout-b<name> v1.0.5
+git checkout -b <name> some_other_branch
+git checkout -b <name> af295
+git checkout -b <name> HEAD~2 // Go back 2 commits, you will lose uncommitted work
+git checkout -b <name> v1.0.5
 ```
 
 - `git checkout -` : quick switch to previous branch
@@ -235,7 +284,7 @@ git checkout-b<name> v1.0.5
 
 ### Delete a local branch
 
-- `git branch -d <branchName>` : not delete if it has unmerged changes
+- `git branch -d <branchName>` : is not able to delete if it has unmerged changes
 - `git branch -D <branchName>` : deletes even if it has unmerged changes
 
 ### Orphan branch
@@ -247,9 +296,9 @@ git checkout-b<name> v1.0.5
 - After a git pull or git merge command, add the following tag:
   `git pull origin master --allow-unrelated-histories`
 
-Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
-<hr>
+---
 
 ## > Stashing
 
@@ -271,11 +320,14 @@ Code not ready to commit but needs to be saved to be applied later. That's where
 - `git stash show stash@{n}` : specific stash
 - `git stash show -p stash@{n}` : content of the specific stash
 
-### Apply and remove stash
+### Apply stash
 
-- `git stash pop` : apply last stash and remove it from the stack
 - `git stash apply` : apply last stash without removing it
 - `git stash apply stash@{n}` : apply a specific stash
+
+### Apply and remove stash from stash list
+
+- `git stash pop` : apply last stash and remove it from the stack
 - `git stash pop stash@{n}` : apply a specific stash and remove it from the stack
 
 - To remove all stash `git stash clear`
@@ -290,9 +342,9 @@ git checkout correct-branch
 git stash pop
 ```
 
-Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
-<hr>
+---
 
 ## > Renaming
 
@@ -310,7 +362,7 @@ git push origin :old_branch // git push origin -d old_branch
 git push--set-upstream origin new_branch
 ```
 
-<hr>
+---
 
 ## > Pushing
 
@@ -347,9 +399,9 @@ To push to a repository that you haven't made yet, or is empty:
   against doing a force push if you are sharing this remote repository with others, since their history will retain every
   overwritten commit, thus rending their work out of sync with the remote repository.
 
-Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
-<hr>
+---
 
 ## > Blaming
 
@@ -370,9 +422,9 @@ Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) ar
 - `git archive --output=archive-HEAD.tar.gz HEAD`
 - `git archive --output=archive-HEAD.zip --prefix=src-directory-name HEAD` : When extracted all the files will be extracted inside a directory named src-directory-name in the current directory.
 
-Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
-<hr>
+---
 
 ## > Git useful notes:
 
@@ -407,4 +459,4 @@ TASK-125: Fix minifier error when name > 200 chars
 - [Git: Styleguide](https://udacity.github.io/git-styleguide/)<br>
 - [Git: Guide to commit message by Chris Beams](https://chris.beams.io/posts/git-commit/)
 
-Click on the [:arrow_up:](https://github.com/CURVX/Git-Practice#-quick-links) arrow to move to the top
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
