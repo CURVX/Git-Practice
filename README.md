@@ -1,4 +1,4 @@
-## .gitignore
+## What is a .gitignore file?
 
 The `.gitignore` file is just a simple text file where we can add files that we want git to ignore.
 
