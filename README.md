@@ -92,6 +92,10 @@ git config user.email mail_at_work@example.com
 - `git shortlog -sn` : Names and Number of commits
 - `git shortlog -sne` : Names along with their email ids and the Number of commits
 
+### Show stats
+
+`git log --stats` : shows added/deleted stats of commit
+
 Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
 ---
@@ -229,7 +233,11 @@ The `--allow-empty` commit will bypass the check.
 
 - `git log` to get the hash of the commit you would like to cherry-pick and copy first 6-7 characters.
 - `git checkout <branchName>` move to the barnch where you would like to copy/bring over that commit.
-- `git cherry-pick <hash>` will paste the commit to the branch but it still exists in the old branch.
+- `git cherry-pick <hash>` will bring the changes to the branch and will commit it.
+
+### Cherry-pick without commit
+
+- `git cherry-pick <hash> -n` will bring the changes to the branch and will put the code in staged area. `-n` means no commit.
 
 Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
@@ -254,7 +262,9 @@ Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
 ---
 
-## > Aliases TO_DO
+## > Aliases
+
+- `git config --global alias.<shortcut> '<command>'`: example `alias.st status` for `git status`
 
 ## > Rebasing TO_DO
 
@@ -504,3 +514,86 @@ Also referred to as **SemVer** is versioning system that helps everyone involved
 - Pull any update that has been made to the master meanwhile. `git pull`
 - Now, do a pull merge, `git pull origin feature-#1`
 - And push master to the remote with added changes of `feature-#1` branch, updating the remote master branch.
+
+## Gitflow Workflow
+
+Convention for branch name:
+
+Feature branches? feature/
+Release branches? release/0.1.0
+Hotfix branches? hotfix/
+Support branches? support/
+
+The overall flow of Gitflow is:
+
+- A `develop` branch is created from `master`
+- A `release` branch is created from `develop`
+- `Feature` branches are created from `develop`
+- When a `feature` is complete it is merged into the `develop` branch
+- When the `release` branch is done it is merged into `develop` and `master`
+- If an issue in `master` is detected a `hotfix` branch is created from `master`
+- Once the `hotfix` is complete it is merged to both `develop` and `master`
+
+## git-open
+
+To install git-open: `npm install --global git-open`
+
+### Commands
+
+- `git open remote-name branch-name` : open the page for this branch on the repo website
+
+- `git open --commit`
+- `git open -c` : open the current commit in the repo website
+
+- `git open --issue`
+- `git open -i` : if this branch is named like issue/#123, this will open the corresponding issue in the repo website
+
+- `git open --print`
+- `git open -p` : only print the url at the terminal, but don't open it
+
+## Git TAGs
+
+Tagging in Git or any other VCS refers to creating specific points in history for your repository/data. Usually done to mark release points. Example `stable`.
+
+### Why create TAG?
+
+- To mark release points for your code/data.
+- To create historic restore points.
+
+### When to create TAGs?
+
+- When you want to create a release point for a stable version of your code.
+- When you want to create a historic point for your code/data that you can refer at any future time(to restore your data)
+
+### How to create a TAG?
+
+- Checkout to the branch you would like to tag, `git checkout <branchName`
+- Now add a tag, `git tag v1.0`, its a light-weight tag.
+- To see whether tag has been applied to the branch or not, do `git tag` on the same branch.
+- `git show v1.0` : details about the commit when it was tagged/ state of repository when it was tagged.
+- `git tag -l "v1.*` : shows all tag with v1.\*.
+- To create an annotated tag, `git tag -a v1.0 -m "<message>"`, will be stored as complete git object in git repository.
+
+### How to push tags to remote?
+
+- `git push origin <tagName>` : pushes the tag remote, release
+- `git push --tags` : push all tags
+
+### Delete tags from local
+
+- `git tag -d <tagName>`/ `git tag --delete <tagName>`
+- `git tag -d <tagName1> <tagName2>` : delete multiple tags from local repo
+
+### Delete tags from remote
+
+- `git push origin --delete/-d <tagName>`
+- `git push origin :<tagName>`
+- `git push origin -d <tagName1> <tagName2` : delete multiple tags from remote repository
+
+### Create a branch from a tag and checkout to the branch
+
+- `git checkout -b <branchName> <tagName>`
+
+### Create a tag from some past commit
+
+- `git tag <tagName> <hash>`
