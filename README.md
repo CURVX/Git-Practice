@@ -26,6 +26,7 @@ node_modules
 - `git checkout -b <branchName>` : create a branch and switch to it
 - `git remote add origin <remoteURL>`: link your local git with remote github repo
 - `git push -u origin master` : push your branch to remote ( -u as a shorthand for --set-upstream)
+- `git checkout -b <name> <otherBranch/masterBranch> ` : make a branch of otherBranch/masterBranch
 - `git push origin -d <branchName>` : delete your remote branch
 - `git branch -d/D <branchName>` : delete your local branch
 - `git log --oneline` : will show all of your commits with only the first part of the hash and the commit message
@@ -265,6 +266,7 @@ Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 - `git branch <name>` : create a new branch while staying on the current branch
 - `git checkout <name>` : switch to an existing branch
 - `git checkout -b <name>` : create a new branch and switch to it
+- `git checkout -b <name> <otherBranch/masterBranch> ` : make a branch of otherBranch/masterBranch
 - `git branch <name> [<start-point>]` : start-point -> can be another branch name, commit SHA, HEAD or a tag name
   Example:
 
@@ -382,6 +384,8 @@ git push--set-upstream origin new_branch
 - `git push --set-upstream origin master` OR
 - `git push -u origin master` ( -u as a shorthand for --set-upstream)
 
+> The `-u` flag adds it as a remote tracking branch. After setting up the tracking branch, `git push` can be invoked without any parameters to automatically push the branch to the central repository.
+
 ### Pushing to a new repository
 
 To push to a repository that you haven't made yet, or is empty:
@@ -460,3 +464,43 @@ TASK-125: Fix minifier error when name > 200 chars
 - [Git: Guide to commit message by Chris Beams](https://chris.beams.io/posts/git-commit/)
 
 Click on the [:arrow_up:](#-quick-links) arrow to move to the top
+
+## Other videos:
+
+- [Tips & Tricks with GitHub](https://www.youtube.com/watch?v=sGnqVAfnZ6U)
+
+## Introduction to Semantic Versioning
+
+Also referred to as **SemVer** is versioning system that helps everyone involved i.e; from software developers, release managers to end consumers in software development to keep track of what is going on.
+
+- It is a 3-component number, X.Y.Z: where
+
+  - X: Major Version: Breaks API
+  - Y: Minor Version: New features in backward-compatible way, does not break the API
+  - Z: Patch : Bug fixes
+
+- Pre-release: Appending a hyphen to the end of the SemVer sequence. Example: Version 1.0.0 could be 1.0.0-alpha.1.
+
+### Advantages of SemVer :
+
+- You can keep track of every transition in the software development phase.
+- Versioning can do the job of explaining the developers about what type of changes have taken place and the possible updates that should take place in the software.
+- It helps to keep things clean and meaningful.
+- It helps other people who might be using your project as a dependency.
+
+### Points to keep in mind :
+
+- The first version starts at 0.1.0 and not at 0.0.1, as no bug fixes have taken place, rather we start off with a set of features as first draft of the project.
+- Before 1.0.0 is only the Development Phase, where you focus on getting stuff done.
+- SemVer does not cover libraries tagged 0._._. The first stable version is 1.0.0.
+
+## Git Feature Branch Workflow Management
+
+- Make a branch from a master branch, `git checkout -b feature-#1 master`
+- Keep commiting changes `git commit -m <message>`
+- Add remote tracking, `git push -u origin feature-#1`
+- Keep pushing changes to the feature branch, `git push`
+- After everything has been pushed to the feature branch, checkout to master.
+- Pull any update that has been made to the master meanwhile. `git pull`
+- Now, do a pull merge, `git pull origin feature-#1`
+- And push master to the remote with added changes of `feature-#1` branch, updating the remote master branch.
