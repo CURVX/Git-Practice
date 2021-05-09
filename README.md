@@ -1,6 +1,6 @@
 ## What is a .gitignore file?
 
-The `.gitignore` file is just a simple text file where we can add files that we want git to ignore.
+The `.gitignore` file is just a simple text file where we can add files that we want git to ignore. Simply put, they won't be tracked by git.
 
 ```
 node_modules
@@ -11,7 +11,12 @@ node_modules
 
 ## > Useful commands
 
-- `rmdir <directory>` : needs to be an empty directory
+### cmd
+
+- `rmdir /S <nonEmpty_directory>` : deletes the non-empty directory recursively, prompts
+
+### bash
+
 - `rm -rf <nonEmpty_directory>` : deletes the non-empty directory recursively without prompting anything.
 
 ---
@@ -41,8 +46,8 @@ node_modules
 
 ## > Quick Links
 
-| [Staging](#-staging) | [Remote](#-remote) | [Pushing](#-pushing) | [Undoing](#-undoing) | [Renaming](#-renaming) | [Branching](#-branching) | [Stashing](#-stashing) |
-| -------------------- | ------------------ | -------------------- | -------------------- | ---------------------- | ------------------------ | ---------------------- |
+| [Staging](#-staging) | [Remote](#-remote) | [Pushing](#-pushing) | [Undoing](#-undoing) | [Renaming](#-renaming) | [Branching](#-branching) | [Stashing](#-stashing) | [Tags](#git-tags) |
+| -------------------- | ------------------ | -------------------- | -------------------- | ---------------------- | ------------------------ | ---------------------- | ---------------------- |
 
 ## > FAQ
 
@@ -52,6 +57,8 @@ node_modules
 - [How to move commit from one branch to another (cherry-pick)?](#cherry-pick)
 - [How to handle merge conflict?](#merge-conflict)
 - [How to create an empty commit?](#creating-an-empty-commit)
+- [What is Semantic Versioning?](#introduction-to-semantic-versioning)
+- [Git Workflow](#git-feature-branch-workflow-management)
 
 ---
 
@@ -475,9 +482,7 @@ TASK-125: Fix minifier error when name > 200 chars
 
 Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
-## Other videos:
-
-- [Tips & Tricks with GitHub](https://www.youtube.com/watch?v=sGnqVAfnZ6U)
+---
 
 ## Introduction to Semantic Versioning
 
@@ -503,6 +508,10 @@ Also referred to as **SemVer** is versioning system that helps everyone involved
 - The first version starts at 0.1.0 and not at 0.0.1, as no bug fixes have taken place, rather we start off with a set of features as first draft of the project.
 - Before 1.0.0 is only the Development Phase, where you focus on getting stuff done.
 - SemVer does not cover libraries tagged 0._._. The first stable version is 1.0.0.
+
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
+
+---
 
 ## Git Feature Branch Workflow Management
 
@@ -534,6 +543,10 @@ The overall flow of Gitflow is:
 - If an issue in `master` is detected a `hotfix` branch is created from `master`
 - Once the `hotfix` is complete it is merged to both `develop` and `master`
 
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
+
+---
+
 ## git-open
 
 To install git-open: `npm install --global git-open`
@@ -550,6 +563,10 @@ To install git-open: `npm install --global git-open`
 
 - `git open --print`
 - `git open -p` : only print the url at the terminal, but don't open it
+
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
+
+---
 
 ## Git TAGs
 
@@ -597,3 +614,11 @@ Tagging in Git or any other VCS refers to creating specific points in history fo
 ### Create a tag from some past commit
 
 - `git tag <tagName> <hash>`
+
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
+
+---
+
+## Other videos:
+
+- [Tips & Tricks with GitHub](https://www.youtube.com/watch?v=sGnqVAfnZ6U)
