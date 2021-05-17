@@ -9,19 +9,21 @@ node_modules
 
 ---
 
-## > Useful commands
+## > Useful cmd/shell commands
 
 ### cmd
 
 - `rmdir /S <nonEmpty_directory>` : deletes the non-empty directory recursively, prompts
+- `fsutil file createnew <fileName> 0` : creates a zero byte file, similar to `touch` but needs administrator privilege
+- `echo >> <fileName>` : creates a file with content `ECHO is on.` irrespective of file extension.
 
-### bash
+### shell
 
 - `rm -rf <nonEmpty_directory>` : deletes the non-empty directory recursively without prompting anything.
 
 ---
 
-## > Git useful commands:
+## > Git quick lookup commands
 
 - `git init` : creates a hidden folder, .git, needed for Git to work.
 - `git status` : review the list of files
@@ -46,8 +48,8 @@ node_modules
 
 ## > Quick Links
 
-| [Staging](#-staging) | [Remote](#-remote) | [Pushing](#-pushing) | [Undoing](#-undoing) | [Renaming](#-renaming) | [Branching](#-branching) | [Stashing](#-stashing) | [Tags](#git-tags) |
-| -------------------- | ------------------ | -------------------- | -------------------- | ---------------------- | ------------------------ | ---------------------- | ---------------------- |
+| [Staging](#-staging) | [Remote](#-remote) | [Pushing](#-pushing) | [Undoing](#-undoing) | [Renaming](#-renaming) | [Branching](#-branching) | [Stashing](#-stashing) | [Tags](#git-tags) | [Merging](#-merging) |
+| -------------------- | ------------------ | -------------------- | -------------------- | ---------------------- | ------------------------ | ---------------------- | ----------------- | -------------------- |
 
 ## > FAQ
 
@@ -57,6 +59,7 @@ node_modules
 - [How to move commit from one branch to another (cherry-pick)?](#cherry-pick)
 - [How to handle merge conflict?](#merge-conflict)
 - [How to create an empty commit?](#creating-an-empty-commit)
+- [Restore repository to the new state (unstage first commit)](#restore-repository-to-a-new-state)
 - [What is Semantic Versioning?](#introduction-to-semantic-versioning)
 - [Git Workflow](#git-feature-branch-workflow-management)
 
@@ -166,6 +169,14 @@ To jump back to a previous commit, first find the commit's hash using `git log`.
 
 While you can recover the discarded commits using `reflog` and `reset`, uncommitted changes cannot be recovered. Use `git stash`; `git reset` instead of `git reset --hard` to be safe.
 
+### Restore repository to a new state
+
+- Delete the HEAD and restore your repository to a new state, where you can create a new initial commit:
+  `git update-ref -d HEAD`
+
+- After you create a new commit, if you have already pushed to remote, you will need to force it to the remote in order to overwrite the previous initial commit:
+  `git push --force origin`
+
 ### Using reflog
 
 - `git reflog`: if you screw up a rebase, one option to start again is to go back to the commit (pre rebase). You can do this using reflog (which has the history of everything you've done for the last 90 days - this can be configured)
@@ -179,7 +190,8 @@ Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
 ## > Merging
 
-- `git merge <another_branch>` : make sure you are in the branch that is getting merged into.
+- `git merge <another_branch>` : make sure you are in the branch that is getting merged into, retains all the commits of merged branch.
+- `git merge --squash <another_branch>` : summarizes all the different commits into the last commit, then merges this last commit with the latest of active branch.
 - `git merge --abort` : after starting a merge, you might want to stop the merge and return everything to its pre-merge state
 - `git merge <branch_name> --no-ff -m "<commit message>"` : merge with a commit as default behaviour in fast-forward only updates the branch pointer without creating a merge commit.
 
@@ -195,6 +207,8 @@ In case of a merge conflict,
 
 - Clear these characters and proceed with `git commit`, no need for message, as this a merge-commit.
 - Something else will pop-up, just do `Shift + ;` and do `:wq` i,e; write & quit.
+
+Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
 ---
 
@@ -367,7 +381,7 @@ Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 
 ## > Renaming
 
-- `git branch -m old_name new_name`: renaming a local branch
+- `git branch -m old_name new_name` : renaming a local branch
 
 ### Renaming a local and the remote branch:
 
