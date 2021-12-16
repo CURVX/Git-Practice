@@ -117,6 +117,8 @@ Click on the [:arrow_up:](#-quick-links) arrow to move to the top
 - `git remote set-url <origin/alias> https://github.com/username/repo.git`: change 'origin' remote's URL/ set URL for a specific remote
 - `git remote get-url <name>` : url for an existing remote
 - `git remote show origin` : lists the URL for the remote repository as well as the tracking branch information
+- `git remote prune origin --dry-run` : lists branches that can be deleted/pruned on your local
+- `git remote prune origin` : prune/cleanup the local references
 
 ### Remove a Remote Repository
 
